@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+#define testcase while(t--)
+using namespace std;
+
+//A Pythagorean triple consists of three positive integers 
+//a, b, and c, such that a*a + b*b = c*c where 
+// c is largest of all 3
+ 
+
+bool check(int a,int b,int c)
+{
+	int m = max(a,max(b,c));
+	int y,z;
+	if(m == a)
+	{
+		y = b;
+		z = c;
+	}
+	else if(m == b)
+	{
+		y=a;
+		z = c;
+	}
+	else
+	{
+		y = a;
+		z= b;
+	}
+
+	if(m*m == (y*y + z*z))
+		return true;
+	else
+		return false;
+}
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  
+  int a,b,c;
+  cin>>a>>b>>c;
+
+  if(check(a,b,c))
+  {
+  	cout<<"Yes";
+  }
+  else
+  {
+  	cout<<"No";
+  }
+
+  return 0;
+}
