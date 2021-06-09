@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+	freopen("input.txt","r",stdin);
+	freopen("output.txt","w",stdout);
+  #endif
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int t;
+	ll i=1;
+	cin>>t;
+	while(t--)
+	{
+		long long int n;
+		cin>>n;
+		long long int a[n] = {0};
+		for (int i = 0; i < n; ++i)
+		{
+			cin>>a[i];
+		}  
+		long long int ans = 1;
+		long long int mainans =1;
+		long long int curr_diff = a[1] - a[0];
+		for (int i = 2; i < n ; ++i)
+		{
+			if((a[i] - a[i-1]) == curr_diff)
+			{
+				ans++;
+			}
+			else
+			{
+				curr_diff  = a[i] - a[i-1];
+
+				mainans = max(ans , mainans);
+				ans = 1;
+			}
+		}
+		cout<<"Case #"<<i<<": "<<max(ans+1,mainans+1)<<endl;
+
+		i++;
+	}
+	return 0;
+}
