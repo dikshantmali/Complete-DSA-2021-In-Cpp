@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+#define testcase while(t--)
+using namespace std;
+
+
+void insertionsort(int *a,int n)
+{
+	
+	for(int i=1;i<n;++i)
+	{
+		int current_element = a[i];
+		int j= i-1;
+		while(a[j] > current_element && j>=0)
+		{
+			a[j+1] = a[j];
+			j--;
+		}
+		a[j+1] = current_element;
+	}
+
+}
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+
+  int n;
+  cin>>n;
+  int a[n] = {0};
+  for (int i = 0; i < n; ++i)
+    {
+    	cin>>a[i];
+    }  
+    
+    insertionsort(a,n);
+
+    for (int i = 0; i < n; ++i)
+    {
+    	cout<<a[i]<<" ";
+    }
+  return 0;
+}
