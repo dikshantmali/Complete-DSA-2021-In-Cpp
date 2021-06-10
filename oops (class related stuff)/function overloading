@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+// function overloading
+class A{
+
+public:
+  void a()
+  {
+    cout<<"function with no argument\n";
+  }
+  void a(int x)
+  {
+
+    cout<<"function with int argument\n";
+  }
+  void a(string s)
+  {
+
+    cout<<"function with string argument\n";
+  }
+};
+
+
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+   A obj;
+   obj.a();
+obj.a(10);
+   obj.a("dikshant");
+
+
+  return 0;
+}

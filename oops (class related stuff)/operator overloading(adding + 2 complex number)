@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+// + operator overloading
+class test{
+private:
+  int real;
+  int img;
+public:
+  test()
+  {
+    real = 0;
+    img = 0;
+  }
+  test (int r,int i)
+  {
+real = r;
+img = i;
+  }
+
+  test operator + (test const &obj)
+  {
+    test a;
+    a.real = real + obj.real;
+    a.img = img + obj.img;
+
+    return a;
+  }
+
+  void print()
+  {
+    cout<<real<<"+"<<img<<"i\n";
+  }
+
+
+};
+
+
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+test c1(10,12) , c2(20,14);
+test c3 = c1+c2;
+c3.print();
+
+
+  return 0;
+}
