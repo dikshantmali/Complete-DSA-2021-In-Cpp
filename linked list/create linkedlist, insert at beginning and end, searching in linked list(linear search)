@@ -1,0 +1,111 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+
+class node{
+public:
+  int data;
+  node* next;
+
+  node(int x)
+  {
+    data= x;
+    next=NULL;
+  }
+
+};
+
+
+void printlinkedlist(node *head)
+{
+node* temp = head;
+while(temp->next!=NULL)
+{
+  cout<<temp->data<<"->";
+  temp = temp->next;
+}
+cout<<"NULL";
+}
+
+void insertattheend(node* head, int val)
+{
+  node* my_node = new node(val);
+
+  if(head == NULL)
+  {
+    head = my_node;
+  return;
+  }
+  node* temp = head;
+  while(temp->next!=NULL)
+    temp = temp->next;
+
+  temp->next = my_node;
+
+}
+
+void insertathead(node* &head,int val)
+{
+  node* my_node = new node(val);
+  my_node->next = head;
+  head = my_node;
+}
+
+
+bool search(node* head,int element)
+{
+node* temp = head;
+while(temp!=NULL)
+{
+  if(temp->data == element)
+  {
+    return true;
+  }
+  temp = temp->next;
+}
+
+return false;
+}
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+
+node* head = new node(10);
+node* temp1 = new node(20);
+node* temp2 = new node(30);
+node* temp4 = new node(40);
+head->next = temp1;
+temp1->next = temp2;
+temp2->next = temp4;
+printlinkedlist(head);
+cout<<endl;
+insertattheend(head,50);
+insertattheend(head,60);
+printlinkedlist(head);
+cout<<endl;
+insertathead(head,1);
+insertathead(head,2);
+insertathead(head,5);
+
+printlinkedlist(head);
+cout<<endl;
+if(search(head,0))
+{
+  cout<<"element found";
+}
+else
+{
+  cout<<"Not found";
+}
+
+
+  return 0;
+}
