@@ -1,0 +1,86 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+
+class student{
+  string name;
+public:
+  int age;
+  bool gender;
+
+// default constructor
+  student()
+  {
+    cout<<"my default constructor\n";
+    name = "ram";
+    age = 0;
+    gender = 0;
+
+  }
+
+
+// parameterised constructor
+  student(string a,int b,int c)
+  {
+
+
+    cout<<"parameterised constructor\n";
+    name = a;
+    age = b;
+    gender = c;
+  }
+
+  // copy constructor
+  student(student &obj)
+  {
+    cout<<"Copy constructor\n";
+name = obj.name;
+age = obj.age;
+gender = obj.gender;
+  }
+  
+  // destructor
+  ~student()
+  {
+    cout<<"Destroyed\n";
+  }
+
+
+  // operator overloading
+
+  bool operator == (student &obj)
+  {
+    if(name==obj.name && age == obj.age && gender == obj.gender)
+      return true;
+    return false;
+  }
+};
+
+
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+   student a;
+   student b("ramesh",21,0);
+   student c(a);
+   
+
+   if(c==a)
+   {
+    cout<<"Yes they are same\n";
+   }
+   else
+   {
+    cout<<"Not same\n";
+   }
+
+  return 0;
+}
