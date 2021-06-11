@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+  int n;
+  cin>>n;
+  int a[n] = {0};
+  for (int i = 0; i < n; ++i)
+  {
+    cin>>a[i];
+  }
+  int max_product=a[0];
+  int curr_max = a[0];
+  int curr_min = a[0];
+
+
+  for (int i = 1; i < n; ++i)
+  {
+  	int curr_max1 = curr_max;
+  	curr_max = max(a[i] , max(a[i]*curr_max , a[i]*curr_min));
+    curr_min = min(a[i] , min(a[i]*curr_max1 , a[i]*curr_min));
+    max_product = max(max_product , curr_max);
+  }
+
+  cout<<max_product;
+
+  return 0;
+}
