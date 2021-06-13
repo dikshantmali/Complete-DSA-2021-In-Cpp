@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+signed main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  // max and min diff in array
+
+  ll t;
+  cin>>t;
+  while(t--)
+  {
+    ll n;
+    cin>>n;
+    ll a[n] = {0};
+    for (int i = 0; i < n; ++i)
+    {
+      cin>>a[i];
+    }
+    sort(a,a+n);
+    ll max=0;
+    ll min = 0;
+    for (int i = 0; i < n/2; ++i)
+    {
+      max = max + abs(a[i]-a[n-i-1]);
+      min = min + abs(a[2*i] - a[2*i+1]);
+    }
+    cout<<max<<" "<<min<<endl;
+
+  }
+
+    return 0;
+}
