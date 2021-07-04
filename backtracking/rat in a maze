@@ -1,0 +1,58 @@
+Test case
+
+4
+0 -1 -1 -1
+0  0 -1 -1
+-1  0  0 -1
+-1  0  0  0
+
+ans: 2
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define N 50
+int totalWays = 0;
+ 
+void findWays(int maze[][N], int n, int r, int c) {
+   if (r == n-1 && c == n-1) {
+       totalWays++;
+       return;
+   }
+  
+   if (c+1 < n && maze[r][c+1] != -1)
+       findWays(maze, n, r, c+1);
+   if (r+1 < n && maze[r+1][c] != -1)
+       findWays(maze, n, r+1, c);
+}
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+
+  int n;
+  cin>>n;
+  int a[50][50] = {0};
+  for (int i = 0; i < n; ++i)
+  {
+    for (int j = 0; j < n; ++j)
+    {
+      cin>>a[i][j];
+    }
+  }
+
+findWays(a, n, 0, 0);
+   printf("%d", totalWays);
+
+
+
+
+    return 0;
+  
+}
