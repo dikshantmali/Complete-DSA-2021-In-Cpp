@@ -1,0 +1,54 @@
+https://www.codechef.com/problems/BLONDIE
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  
+  int t;
+  cin>>t;
+  while(t--)
+  {
+    ll n;
+    cin>>n;
+    int a[n] = {0};
+    for (int i = 0; i < n; ++i)
+    {
+      cin>>a[i];
+    }
+    double prefixsum = 0;
+    for (int i = 0; i < n; ++i)
+    {
+      if(a[i]>=0)
+      prefixsum += a[i];
+
+      if (a[i] < 0)
+      {
+
+        int z = (prefixsum)/(i);
+        a[i] = z;
+        prefixsum += a[i];
+       
+
+
+      }
+
+    }
+
+    for (int i = 0; i < n; ++i)
+    {
+      cout<<a[i]<<" ";
+    }
+    cout<<endl;
+  }
+    return 0;
+  
+}

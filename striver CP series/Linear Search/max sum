@@ -1,0 +1,44 @@
+https://www.hackerearth.com/practice/algorithms/searching/linear-search/practice-problems/algorithm/maximum-sum-4-f8d12458/
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+  ll n;
+  cin>>n;
+  ll a[n] = {0};
+  ll ans = 0;
+  ll ele = 0;
+  for (int i = 0; i < n; ++i)
+  {
+  	cin>>a[i];
+  	if (a[i] >= 0)
+  	{
+  		ans += a[i];
+  		ele++;
+  	}
+  }
+  if (ans)
+  {
+  	cout<<ans<<" "<<ele<<endl;
+  }
+  else
+  {
+  	cout<<*max_element(a,a+n)<<" "<<1<<endl;
+  }
+
+
+    return 0;
+}

@@ -1,0 +1,40 @@
+https://www.hackerrank.com/contests/code-leader/challenges/string-counter/problem
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+ string s;
+ getline(cin,s);
+ s= s+" ";
+ 
+ map<string,int> mp;
+ string word = "";
+ for (int i = 0; i < s.length() ; ++i)
+ {
+ 	if (s[i] != ' ')
+ 	{
+ 		word = word + s[i];
+ 	}
+ 	else
+ 	{
+ 		mp[word]++;
+ 		word = "";
+ 	}
+ }
+ for(auto it :mp)
+ {
+ 	cout<<it.first<<" "<<it.second<<endl;
+ }
+    return 0;
+}

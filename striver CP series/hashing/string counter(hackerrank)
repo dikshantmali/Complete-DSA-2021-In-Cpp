@@ -1,0 +1,89 @@
+https://www.hackerrank.com/contests/code-leader/challenges/string-counter/problem
+
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+
+bool comp(pair<string,pair<int,int>> p1,pair<string,pair<int,int>> p2)
+{
+     if(p1.second.first > p2.second.first)
+         return true;
+   
+        return p1.second.second < p2.second.second;
+    
+    
+        
+    
+}
+int main() {
+  
+ string s;
+ getline(cin,s);
+ s = s + " ";
+ 
+ unordered_map<string,pair<int,int>> mp;
+ string word = "";
+    int x = s.length();
+    int b=1;
+ for (int i = 0; i < x ; ++i)
+ {
+     if (s[i] != ' ')
+     {
+         word = word + s[i];
+     }
+     else
+     {
+         auto itr  = mp.find(word);
+         
+         if(itr != mp.end())
+         {
+             itr->second.first++;
+             
+         }
+         else
+         {
+             mp.insert({word,{1,b}});
+             b++;
+         }
+         
+         word = "";
+     }
+    
+    
+  }
+  
+ 
+    vector<pair<string,pair<int,int>>> v;
+  for(auto it :mp)
+  {
+      if(it.second.first > 1)
+      {
+       v.push_back(make_pair(it.first,make_pair(it.second.first,it.second.second)));   
+      }
+ }
+     sort(v.begin(),v.end(),comp);
+    
+    if(!v.empty())
+    {
+         int z = v.size();
+   for(int i=0;i<z;++i)
+  {
+       cout<<v[i].second.first<<" "<<v[i].first<<endl;
+  }
+     
+     }
+   else
+    {
+        cout<<"0\n";
+     }
+    
+ 
+    
+    return 0;
+}
