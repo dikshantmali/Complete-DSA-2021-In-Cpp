@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+  int n;
+  cin>>n;
+  int sum;
+  cin>>sum;
+  int a[n] = {0};
+  for (int i = 0; i < n; ++i)
+  {
+    cin>>a[i];
+
+  }
+  unordered_map<int,int> mp;
+   int c = 0;
+  for (int i = 0; i < n; ++i)
+  {
+    int x = sum - a[i];
+    if (mp[x] == 0)
+    {
+      mp[a[i]]++;
+    }
+    else
+    {
+      c += mp[x];
+      mp[a[i]]++;
+    }
+  }
+  cout<<c;
+
+    return 0;
+  
+}
