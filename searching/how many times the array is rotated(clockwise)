@@ -1,0 +1,33 @@
+https://practice.geeksforgeeks.org/problems/rotation4723/1#
+
+
+
+int findKRotation(int arr[], int n) {
+	    // code here
+	    int start = 0;
+	    int end = n-1;
+	    int res = 0;
+	    while(start <= end)
+	    {
+	        int mid = start + (end-start)/2;
+	        int left = (mid-1+n)%n;
+	        int right = (mid+1)%n;
+	        if(arr[mid] <= arr[left] && arr[mid] <= arr[right])
+	        {
+	            res = mid;
+	            
+	            break;
+	        }
+	        else if(arr[start] <= arr[mid] && arr[mid] >= arr[end])
+	        {
+	            start = mid+1;
+	        }
+	        else 
+	        
+	        {
+	            end = mid-1;
+	        }
+	    }
+	    
+	    return res;
+	}
