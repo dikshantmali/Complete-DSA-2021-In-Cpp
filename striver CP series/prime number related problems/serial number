@@ -1,0 +1,80 @@
+https://www.hackerearth.com/practice/math/number-theory/primality-tests/practice-problems/algorithm/bob-and-gems-f8226fbd/
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+int spf[10000005];
+void primefactorization()
+{
+  
+  for (int i = 2; i <= 10000000 ; ++i)
+  {
+    spf[i] = i;
+  }
+
+
+  for (int i = 2; i*i <= 10000000 ; i++)
+  {
+    if (spf[i] == i)
+    {
+      for(int j=i*i;j<=10000000;j+=i)
+      {
+        if(spf[j] == j)
+        {
+        spf[j] = i;
+        }
+      }
+    }
+  }
+}
+
+
+int check(int n,int p)
+{
+
+	set<int> s;
+	while(n!=1)
+	{
+		s.insert(spf[n]);
+		n = n/spf[n];
+	}
+
+	if (s.size() >= p)
+	{
+		return true;
+	}
+	return false;
+
+}
+
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+ 
+  	ll p;
+  	cin>>p;
+    ll t;
+  	cin>>t;
+
+  	primefactorization();
+  	while(t--)
+  	{
+  		ll n;
+  		cin>>n;
+  		if(check(n,p))
+  		{
+  			cout<<"YES"<<endl;
+  		}
+  		else
+  		{
+  			cout<<"NO"<<endl;
+  		}
+  		
+  	}
+    return 0;
+}
