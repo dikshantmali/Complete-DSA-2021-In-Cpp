@@ -1,0 +1,15 @@
+https://practice.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1
+
+int maximumSumSubarray(int k, vector<int> &a , int n){
+        // code here 
+        int sum = accumulate(a.begin(),a.begin()+k,0);
+        
+        int maxi = sum;
+        for(int i=k;i<n;i++)
+        {
+            sum += a[i];
+            sum -= a[i-k];
+            maxi = max(sum,maxi);
+        }
+        return maxi;
+    }
