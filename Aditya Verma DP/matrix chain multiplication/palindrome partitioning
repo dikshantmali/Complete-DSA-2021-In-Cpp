@@ -1,0 +1,79 @@
+https://practice.geeksforgeeks.org/problems/palindromic-patitioning4845/1
+
+
+
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+int dp[1000][1000];
+
+bool checkpallindrome(string s,int i,int j)
+{
+  if (i > j)
+  {
+    return false;
+  }
+  while(i<=j)
+  {
+    if (s[i] != s[j])
+    {
+      return false;
+    }
+    i++;
+    j--;
+  }
+
+  return true;
+
+}
+int pp(string a,int i,int j)
+{
+  if (i >= j || checkpallindrome(a,i,j) == true)
+  {
+    return 0;
+  }
+
+
+
+   if (dp[i][j]!=-1)
+   {
+     return dp[i][j];
+   }
+
+  int mini = INT_MAX;
+  for (int k = i; k <= j-1; ++k)
+  {
+    if(dp[i][k] == -1)  
+    dp[i][k] = pp(a,i,k);
+    if(dp[k+1][j] == -1)  
+    dp[k+1][j] = pp(a,k+1,j);
+    
+    int temp = dp[i][k]+ dp[k+1][j] + 1;
+ mini = min(temp,mini);
+
+  }
+
+  dp[i][j] = mini;
+  return mini;
+}
+
+
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+
+  string s;
+  cin>>s; 
+int n = s.length()-1;
+memset(dp,-1,sizeof dp);
+  cout<<pp(s,0,n);
+  return 0;
+}

@@ -1,0 +1,111 @@
+
+https://practice.geeksforgeeks.org/problems/boolean-parenthesization5610/1
+https://www.interviewbit.com/problems/evaluate-expression-to-true/
+
+
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+
+unordered_map<string ,int > mp;
+
+int booleanparaenthesis(string s,int i,int j,bool istrue)
+{
+  if (i > j)
+  {
+    return false;
+  }
+
+  if (i == j)
+  {
+    if (istrue == true)
+    {
+      return  s[i] == 'T';
+    }
+    else
+    {
+      return s[i] == 'F';
+    }
+  }
+  
+  string z="";
+  z += to_string(i);
+  z = z+" ";
+  z += to_string(j);
+  z += " ";
+  z = z+to_string(istrue);
+
+  if (mp.find(z)!=mp.end())
+   {
+    return mp[z];
+   } 
+  
+  int ans = 0;
+  for (int k = i+1; k<=j-1; k+=2)
+  {
+
+    int lt = booleanparaenthesis(s,i,k-1,true);
+    int lf = booleanparaenthesis(s,i,k-1,false);
+    int rt = booleanparaenthesis(s,k+1,j,true);
+    int rf = booleanparaenthesis(s,k+1,j,false);
+    
+    if (s[k] == '&')
+    {
+      if (istrue == true)
+      {
+      ans = ans + lt*rt;
+        /* code */
+      }
+      else
+      {
+        ans = ans + lt*rf +lf*rt + lf*rf;
+      }
+    }
+    else if (s[k]=='|')
+    {
+      if (istrue == true)
+      {
+      ans = ans + lt*rf + lf*rt + lt*rt;
+              }
+      else
+      {
+        ans = ans + lf*rf;
+      }
+    }
+    else
+    {
+      if (istrue == true)
+      {
+        ans = ans + lt*rf + lf*rt;
+      }
+      else
+      {
+        ans = ans + lt*rt + lf*rf; 
+      }
+    }
+  }
+
+mp[z] = ans;
+  return ans;
+
+
+}
+
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+
+
+  string s;
+  cin>>s; 
+int n = s.length()-1;
+mp.clear();
+  cout<<booleanparaenthesis(s,0,n,true);
+  return 0;
+}
