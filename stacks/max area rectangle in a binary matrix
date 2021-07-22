@@ -1,0 +1,87 @@
+https://www.interviewbit.com/problems/max-rectangle-in-binary-matrix/
+
+
+class Solution
+{
+    public:
+    //Function to find largest rectangular area possible in a given histogram.
+    long long getMaxArea(long long arr[], int n)
+    {
+        // Your code here
+        
+        stack< pair<long long ,int> > s;
+        vector<int> left;
+        vector<int> right;
+        
+        //cal for left nsl
+        
+        for(int i=0;i<n;++i)
+        {
+            if(s.size() == 0)
+            {
+                left.push_back(-1);        
+            }
+            else
+            {
+                while(s.size()>0 && s.top().first >= arr[i]  )
+                {
+                    s.pop();
+                }
+                if(s.size() != 0)
+                {
+                    left.push_back(s.top().second);
+                }
+                else
+                {
+                    left.push_back(-1);
+                }
+            }
+            
+            
+            s.push({arr[i],i});
+        }
+        
+        //cal for right nsr
+        while(s.size() > 0)
+        s.pop();
+    
+        for(int i=n-1;i>=0;--i)
+        {
+            if(s.size() == 0)
+            {
+                right.push_back(n);        
+            }
+            else
+            {
+                while(s.size()>0 && s.top().first >= arr[i]  )
+                {
+                    s.pop();
+                }
+                if(s.size() != 0)
+                {
+                    right.push_back(s.top().second);
+                }
+                else
+                {
+                    right.push_back(n);
+                }
+            }
+            
+            
+            s.push({arr[i],i});
+        }
+        
+        reverse(right.begin(),right.end());
+        long long maxi = INT_MIN;
+        for(int i=0;i<n;++i)
+        {
+            long long  s = (right[i] - left[i] - 1)*arr[i];
+            maxi = max(maxi,s);
+            
+        }
+        
+        
+        return maxi;
+        
+    }
+};

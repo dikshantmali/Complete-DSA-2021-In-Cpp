@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/0
+
+
+
+void removeDuplicates(struct Node* head)
+{
+    struct Node* temp = head->next;
+    struct Node* temp1 = head->next;
+    int prev = head->data;
+    
+    if(head->next == NULL)
+    return;
+    
+    struct Node* z;
+    while(temp!=NULL)
+    {
+        if(temp->data != prev)
+        {
+            temp1->data = temp->data;
+            prev = temp1->data;
+            z =temp1;
+            temp1 = temp1->next;
+        }
+        temp = temp->next;
+    }
+    if(temp1 == head->next)
+    head->next = NULL;
+    else
+    z->next = NULL;
+    
+}
