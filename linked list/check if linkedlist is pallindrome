@@ -1,0 +1,51 @@
+https://practice.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1#
+
+
+bool isPalindrome(Node *head)
+    {
+        //Your code here
+        if(head == NULL)
+        return false;
+        if(head->next ==NULL )
+        return true;
+        struct Node* slow = head;
+        struct Node* fast = head;
+        
+        while(fast->next!=NULL && fast->next->next!=NULL)
+        {
+            slow = slow->next;
+            fast =  fast->next->next;
+        }
+        
+        Node* newhead = slow->next;
+        slow->next = NULL;
+        
+        Node* prev = NULL;
+        Node* curr = newhead;
+        Node* next;
+        while(curr!=NULL)
+  {
+    next = curr->next;
+    curr->next = prev;
+
+
+    prev = curr;
+    curr = next;
+
+
+  }
+  newhead = prev;
+        
+        while(newhead!=NULL && head!=NULL)
+        {
+            if(newhead->data != head->data)
+            return false;
+            
+            newhead = newhead->next;
+            head = head->next;
+        }
+        
+        return true;
+        
+        
+    }
