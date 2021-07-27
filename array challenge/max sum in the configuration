@@ -1,0 +1,34 @@
+
+https://practice.geeksforgeeks.org/problems/max-sum-in-the-configuration/0
+
+int max_sum(int A[],int N)
+{
+//Your code here
+
+      int c = accumulate(A,A+N,0);
+      int max_ans = INT_MIN;
+      int sum1 = 0;
+      for(int i=1;i<N;i++)
+      {
+          sum1 += i*A[i];
+      }
+      
+      max_ans  = sum1;
+      int prev = sum1;
+      
+      for(int i=1;i<N;i++)
+      {
+           int newsum = prev -c
+                       + A[i-1] * (N);
+           
+           prev = newsum;
+           
+          max_ans = max(max_ans, newsum);
+         
+          
+      }
+      
+      
+      return max_ans;
+      
+}
