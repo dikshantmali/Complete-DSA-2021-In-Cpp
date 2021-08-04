@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/minimum-platforms-1587115620/1
+
+sort(arr,arr+n);
+    	sort(dept,dept+n);
+    	
+    	
+    	int i=1,j=0;
+    	int platform = 1;
+    	int max_platform = 1;
+    	while(i<n && j<n)
+    	{
+    	    if(arr[i] <= dept[j])
+    	    {
+    	        platform++;
+    	        i++;
+    	        
+    	    }
+    	    else if(arr[i] > dept[j])
+    	    {
+    	        platform--;
+    	        j++;
+    	        
+    	    }
+    	    
+    	    if(platform > max_platform)
+    	    {
+    	        max_platform = platform;
+    	    }
+    	}
+    	
+    	return max_platform;

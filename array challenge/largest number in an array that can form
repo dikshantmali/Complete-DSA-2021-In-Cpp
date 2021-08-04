@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/largest-number-formed-from-an-array1117/1
+
+static bool comp(string a,string b)
+	{
+	    string o1 = a+b;
+	    string o2 = b+a;
+	    
+	    return o1>o2;
+	    
+	}
+	string printLargest(vector<string> &arr) {
+	    // code here
+	    
+	   sort(arr.begin(),arr.end(),comp);
+	    
+	    string res = "";
+	    for(auto it:arr)
+	    {
+	        res += it;
+	    }
+	    return res;
+	}

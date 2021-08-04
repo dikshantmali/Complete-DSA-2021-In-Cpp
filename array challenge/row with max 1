@@ -1,0 +1,27 @@
+https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1/
+
+ int j = m-1;
+	  
+	  while(j>=0 )
+	  {
+	      
+	  if(mat[0][j] == 1)
+	  j--;
+	  else
+	  break;
+	  }
+	  
+	  int row = 0;
+	  for(int i=1;i<n;i++)
+	  {
+	     while(j>=0 && mat[i][j] == 1)
+	     {
+	         j--;
+	         row = i;
+	     }
+	  }
+	  
+    if(j == m-1)
+    return -1;
+    
+	  return row;
