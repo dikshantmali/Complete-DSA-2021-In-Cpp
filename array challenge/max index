@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/maximum-index-1587115620/1
+
+int maxIndexDiff(int arr[], int n) 
+    { 
+        
+        // Your code here
+         vector<pair<int,int>> v;
+       
+        for(int i=0;i<n;i++)
+        {
+            v.push_back(make_pair(arr[i],i));
+        }
+        
+        int ans = 0;
+        int min_index = INT_MAX;
+        sort(v.begin(),v.end());
+        for(int i=0;i<n;i++)
+        {
+            min_index = min(v[i].second,min_index);
+            ans = max(ans,v[i].second - min_index);
+            
+        }
+        
+        return ans;
+        
+    }
