@@ -32,7 +32,7 @@ int32_t main() {
   for(int i=1;i<=n;i++)
   {
     if (!visited[i])
-    {      queue<int> q;
+    {    queue<int> q;
       q.push(i);
       visited[i] = 1;
       while(!q.empty())

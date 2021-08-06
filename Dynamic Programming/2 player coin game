@@ -1,0 +1,26 @@
+https://www.faceprep.in/c-plus-plus/two-player-coin-game/
+
+
+int dp[1001][1001];
+int solve(int a[],int i,int j)
+{
+    if(i > j)
+    return 0;
+    if(dp[i][j] != -1)
+    return dp[i][j];
+    
+    int x  = a[i] + min(solve(a,i+2,j) , solve(a,i+1,j-1));
+    int y = a[j] + min(solve(a,i+1,j-1) , solve(a,i,j-2));
+    
+    dp[i][j] = max(x,y);
+    
+    return dp[i][j];
+    
+}
+long long maximumAmount(int arr[], int n) 
+{
+    // Your code here
+    memset(dp,-1,sizeof dp);
+    return solve(arr,0,n-1);
+
+}

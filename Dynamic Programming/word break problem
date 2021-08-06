@@ -1,0 +1,41 @@
+https://practice.geeksforgeeks.org/problems/word-break1352/1/
+
+
+
+unordered_map<string,int> dp;
+    
+    int solve(string s,vector<string> &b)
+    {
+        int length = s.length();
+        if(length == 0)
+        return 1;
+        
+        if(dp[s])
+        return dp[s];
+        
+        for(int i=1;i<=length;i++)
+        {
+            string temp = s.substr(0,i);
+            int flag = 0;
+            for(auto it:b)
+            {
+                if(temp == it)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+            
+            if( flag == 1 && (solve(s.substr(i,length-i),b) == 1))
+            return dp[s] = 1;
+        }
+        
+        return dp[s] = -1;
+    }
+    int wordBreak(string A, vector<string> &B) {
+        //code here
+        if(solve(A,B) == 1)
+        return 1;
+        else 
+        return 0;
+    }

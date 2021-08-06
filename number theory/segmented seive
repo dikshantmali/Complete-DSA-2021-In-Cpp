@@ -54,7 +54,6 @@ int32_t main() {
             {
               if (j != prime[i])
               {
-                /* code */
                 isprime[j-L] = 0;
               }
             }
