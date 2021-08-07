@@ -1,0 +1,32 @@
+https://practice.geeksforgeeks.org/problems/length-of-the-longest-substring3036/1
+
+
+int longestUniqueSubsttr(string S){
+        //code
+        
+        unordered_map<char,int> mp;
+        int i=0,j=0;
+        int temp_length = 0,max_length = 0;
+        for(int i=0;i<S.size();i++)
+        {
+            mp[S[i]] = -1;
+        }
+        while(j < S.length())
+        {
+            if(mp[S[j]] != -1)
+            {
+                i = max(mp[S[j]]+1,i);
+                
+            }
+            
+        mp[S[j]] = j;
+            temp_length = j-i+1;
+               
+            max_length = max(max_length,temp_length);
+        
+             j++;
+        }
+        
+        return max_length;
+        
+    }
