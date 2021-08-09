@@ -1,0 +1,90 @@
+https://www.codingninjas.com/codestudio/guided-paths/competitive-programming/content/148321/offering/1813576
+
+
+#include<bits/stdc++.h>
+#define ll long long
+#define mod 1000000007
+using namespace std;
+long long int dp[50005];
+void get_hash(string str)
+{
+
+  long long int p = 31;
+
+  long long int hash = 0;
+  ll power = 1;
+  for (int i = 0; i < str.length(); ++i)
+  {
+    hash +=  ((str[i] - 'A' + 1)%mod*power%mod)%mod;
+    dp[i] = hash;
+    power = (power*p)%mod;
+  }
+
+
+}
+
+long long int get_hash_patt(string str)
+{
+    long long int p = 31;
+
+  long long int hash = 0;
+  ll power = 1;
+  for (int i = 0; i < str.length(); ++i)
+  {
+    hash +=  ((str[i] - 'A' + 1)%mod*power%mod)%mod;
+   
+    power = (power*p)%mod;
+  }
+
+
+   return hash; 
+}
+int32_t main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  string str,pat;
+  cin>>str;
+  cin>>pat;
+  vector<int> ans;
+  long long int powers[5001] = {0};
+  long long p = 31;
+  powers[0] = 1;
+  for (int i = 1; i <= 5000 ; ++i)
+  {
+    powers[i] = (p%mod*powers[i-1]%mod)%mod;
+  }
+  
+    memset(dp,0,sizeof dp);
+    get_hash(str);
+    
+    long long int ptrhash = get_hash_patt(pat);
+    
+    int lengthofstr = str.length();
+    int lengthofpat = pat.length();
+    
+    if (ptrhash == (dp[lengthofpat-1]))
+    {
+      ans.push_back(0);
+    }
+    for(int i=1;i+lengthofpat <= lengthofstr+1;i++)
+    {
+
+        if((ptrhash%mod*powers[i]%mod)%mod == (dp[i+lengthofpat-1] - dp[i-1] + mod) % mod)
+        {
+
+            ans.push_back(i);
+        }
+    }
+    for (int i = 0; i < ans.size(); ++i)
+    {
+      cout<<ans[i]<<" ";
+    }
+  
+    
+  return 0;
+}
