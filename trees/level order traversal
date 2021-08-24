@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/level-order-traversal/1
+
+
+ 
+      vector<int> ans;
+      
+      queue<Node*> q;
+      q.push(node);
+      while(!q.empty())
+      {
+          Node* newnode = q.front();
+          q.pop();
+          if(newnode->left != NULL)
+          {
+              q.push(newnode->left);
+          }
+          
+          if(newnode->right != NULL)
+          {
+              q.push(newnode->right);
+          }
+          ans.push_back(newnode->data);
+          
+          
+      }
+      
+      return ans;
+      
