@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1#
+
+vector<int> ans;
+   if(root == NULL)
+   return ans;
+    	queue<Node*> q;
+    	q.push(root);
+    	while(!q.empty())
+    	{
+    	    int size = q.size();
+    	    vector<int> temp;
+    	    while(size--)
+    	    {
+    	        Node* top = q.front();
+    	        q.pop();
+    	        temp.push_back(top->data);
+    	        if(top->left != NULL) q.push(top->left);
+    	        if(top->right != NULL) q.push(top->right);
+    	        
+    	    }
+    	    ans.push_back(temp[0]);
+    	    temp.clear();
+    	    
+    	}
+    	
+    	return ans;
