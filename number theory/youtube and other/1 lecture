@@ -1,0 +1,57 @@
+
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  
+  // even number has their rightmost bit(least significant bit) as 0
+  // while odd has 1
+  // binary of 12 = 1100 and 13 is = 1101
+
+  //program to check if number is even or odd
+
+  /*int n;
+  cin>>n;
+
+
+  if ( (n&1) == 0)
+   {
+    cout<<"even";
+   } 
+   else
+   {
+    cout<<"odd";
+   }
+*/
+
+  // int is of 32 bit in c++ means it can store 
+  // number with max of 32bit
+  // we can calculate pow(2,n) as 1<<n thats it
+
+/*
+  cout<<INT_MAX<<endl;
+  cout<<(1LL<<32) - 1<<endl;
+  int a = (1LL<<32) - 1;
+  unsigned int b = (1LL<<32) - 1;
+  cout<<a<<" "<<b<<endl;
+
+  output - 
+  2147483647
+4294967295
+-1 4294967295*/
+
+  
+
+
+
+  return 0;
+}

@@ -1,0 +1,71 @@
+//https://practice.geeksforgeeks.org/problems/check-whether-k-th-bit-is-set-or-not-1587115620/1
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+
+int main() {
+  #ifndef ONLINE_JUDGE
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+  #endif
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+    
+  // check if ith bit is set or not
+
+  /*int n;
+  cin>>n;
+  int i;
+  cin>>i;
+
+  1.   if(((n>>k) & 1) == 1)
+        return true;
+        else
+        return false;
+
+  2. if(((1<<i) & n) == 0)
+    cout<<"Unset";
+  else
+    cout<<"Set";*/
+
+  /*
+all the numbers that comes just before any power 
+of 2 will have their all bit set like 3,7,15,31
+all have their all bit set
+3 = 0011
+7 = 0111
+15 = 1111
+
+  */
+
+// make the ith bit set
+/*int n = 9;
+int i = 1;
+  n = (n | (1<<i));
+  cout<<n<<endl;
+*/
+
+// make ith bit unset
+  // the ~ will make all the bits inverted like 
+  // toggle 0 to 1 and 1 to 0
+  /*int n = 9;
+  int i=3;
+
+
+  n = ((~(1<<i)) & n);
+  cout<<n;
+*/
+
+  // toggle the bits(use x-or)
+/*int n = 9;
+  int i=2;
+
+  cout<<((1<<i) ^ n);
+
+*/
+
+
+  return 0;
+}
